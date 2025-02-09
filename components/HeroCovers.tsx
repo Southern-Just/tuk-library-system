@@ -4,6 +4,7 @@ import Image from "next/image";
 const HeroCovers = () => {
     return (
         <>
+            <p className='text-gold/100'>Similar books</p>
             <div className='flex gap-8 flex-row flex-wrap items-center justify-start ml-6 mt-4'>
                 <Image src='/icons/book-1.svg' width={82} height={82} alt="volumeImage"/>
                 <Image src='/icons/book-2.png' width={82} height={82} alt="volumeImage"/>

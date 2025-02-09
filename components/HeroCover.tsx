@@ -8,7 +8,7 @@ const HeroCover = () => {
             <Image src="/icons/hero.svg" width={300} height={300} alt="heroImage"/>
             <p>Volume IV</p>
             <Button>
-                <Image src="/icons/borrow_book.svg" width={300} height={300} alt="volumeImage"/>
+                <Image src="/icons/borrow_book.svg" width={22} height={22} alt="volumeImage"/>
                 BORROW BOOK
             </Button>
         </div>
