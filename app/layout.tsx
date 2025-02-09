@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import {ReactNode} from "react";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-    weight: ['100', '200', '300', '400', '500','600','700','800','900'],
+import localFont from "next/font/local";
+
+
+const inter = localFont({
+    src: [
+        { path: "/fonts/inter.ttf", weight: "400", style: "normal" },
+        { path: "/fonts/inter.ttf", weight: "500", style: "normal" },
+        { path: "/fonts/inter.ttf", weight: "600", style: "normal" },
+        { path: "/fonts/inter.ttf", weight: "700", style: "normal" },
+    ],
 });
 
+const inter_italic = localFont({
+    src: [
+        { path: "/fonts/inter-italic.ttf", weight: "400", style: "normal" },
+    ],
+    variable: "--inter_italic",
+});
 
 export const metadata: Metadata = {
   title: "TUK library",
@@ -23,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} font-poppins antialiased`}
+        className={`${inter_italic.variable} ${inter.className}  font-poppins antialiased`}
       >
         {children}
       </body>

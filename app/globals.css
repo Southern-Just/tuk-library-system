@@ -69,4 +69,25 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+}
+@layer hero_text {
+  .hero-text{
+    @apply bg-background mt-8 p-6;
+  }
+  .hero-text-h1 {
+    @apply text-3xl text-brand-100 font-medium mb-4 !important;
+  }
+  .hero-text-description{
+    @apply  text-base text-dark-200 text-justify font-medium mb-4 !important;
+  }
+  .hero-text-add{
+    @apply text-grey-100/60  flex flex-row font-medium flex-wrap gap-10 text-base text-justify mt-8 !important;
+  }
+  .hero-text-add span{
+    @apply text-red/70;
+  }
+  .hero-cover p{
+    @apply text-gold/100;
+  }
 }
