@@ -1,12 +1,13 @@
 import React from 'react';
-import HeroText from "@/components/Hero";
+import Hero from "@/components/Hero";
 import HeroCovers from "@/components/HeroCovers";
+import {sampleBooks} from "@/constants";
 
 const Home = () => {
 
     return (
         <>
-            <HeroText/>
+            <Hero {...sampleBooks[0]}/>
             <HeroCovers/>
         </>
     );

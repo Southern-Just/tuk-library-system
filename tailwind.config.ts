@@ -93,6 +93,9 @@ const config: Config = {
 					},
 				},
 			},
+			screens: {
+				xs:'480px',
+			},
 			animation: {
 				"caret-blink": "caret-blink 1.25s ease-out infinite",
 			},

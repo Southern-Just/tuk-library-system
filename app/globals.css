@@ -71,7 +71,10 @@ body {
   }
 
 }
-@layer hero_text {
+@layer hero{
+  .hero{
+    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
+  }
   .hero-text{
     @apply bg-background mt-8 p-6;
   }
@@ -89,5 +92,14 @@ body {
   }
   .hero-cover p{
     @apply text-gold/100;
+  }
+
+  /* Hero Cover */
+
+  .hero-cover-full{
+    @apply w-[256px] h-[310px] xs:w-[296px] xs:h-[410px];
+  }
+  .hero-cover-contained{
+    @apply w-[144px] h-[185px];
   }
 }

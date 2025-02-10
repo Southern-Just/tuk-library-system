@@ -1,19 +1,23 @@
 import React from 'react';
 import HeroCover from "@/components/HeroCover";
 
-const Hero = () => {
+const Hero = ({title,description,author,total_books,available_books,cover}: Book_Meta) => {
     return (
-        <div className="flex">
+        <section className="hero">
         <div className="hero-text">
-            <p className="hero-text-h1">TCP/IP</p>
-            <p className="hero-text-description">TCP, IPv4, IPv6, DHCP, and DNS. In addition, the text explains new trends in Internet systems, including packet classification, Software Defined Networking (SDN), and mesh protocols used in The Internet of Things.</p>
+            <p className="hero-text-h1">{title}</p>
+            <p className="hero-text-description">{description}</p>
             <div className="hero-text-add">
-                <p >Author: Douglas E Comer</p>
-                <p >All: 132</p>
-                <p>Available:<span> 36</span></p>
+                <p >author: {author}</p>
+                <p >All: {total_books}</p>
+                <p>Available:<span> {available_books}</span></p>
             </div>
         </div>
-        <HeroCover/></div>
+            <HeroCover
+                variant='full'
+                className='z-5'
+                coverImage={cover}/>
+      </section>
     );
 }
 
