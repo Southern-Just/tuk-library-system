@@ -14,9 +14,14 @@ const Header = () => {
             <ul className="flex flex-row items-center gap-6">
                 <li>
                     <Link href="/"
-                          className={cn("text-base cursor-pointer", pathname === '/' ? 'text-rose-500': 'text-white',)}
+                          className={cn("text-base cursor-pointer px-4", pathname === '/' ? 'text-brand-100': 'text-black',)}
                     >
                         Home
+                    </Link>
+                    <Link href="/search"
+                          className={cn("text-base cursor-pointer  px-4", pathname === '/search' ? 'text-brand-100': 'text-black',)}
+                    >
+                        Search
                     </Link>
                 </li>
             </ul>

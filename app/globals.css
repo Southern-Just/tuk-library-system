@@ -73,7 +73,7 @@ body {
 }
 @layer hero{
   .hero{
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
+    @apply flex flex-col items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
   }
   .hero-text{
     @apply bg-background mt-8 p-6;

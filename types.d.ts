@@ -6,4 +6,5 @@ interface Book_Meta {
     total_books: number;
     available_books : number;
     coverImage: string;
+    coverColor:string;
 }

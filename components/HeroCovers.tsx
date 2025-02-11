@@ -1,17 +1,21 @@
 import React from 'react';
-import Image from "next/image";
+import CoverPiece from "@/components/CoverPiece"
 
-const HeroCovers = () => {
+interface Props {
+    title?: string;
+    books: Book_Meta[];
+    containerClassName?: string;
+}
+const HeroCovers = ({title, books,containerClassName} : Props) => {
     return (
         <>
-            <p className='text-gold/100'>Similar books</p>
-            <div className='flex gap-8 flex-row flex-wrap items-center justify-start ml-6 mt-4'>
-                <Image src='/icons/book-1.svg' width={82} height={82} alt="volumeImage"/>
-                <Image src='/icons/book-2.png' width={82} height={82} alt="volumeImage"/>
-                <Image src='/icons/book-1.svg' width={82} height={82} alt="volumeImage"/>
-                <Image src='/icons/book-2.png' width={82} height={82} alt="volumeImage"/>
-            </div>
-            <Image src='/images/ellipsis.png' width={62} height={62} alt="ellipsis  " className="justify-center mt-6 bg-light-200"/>
+            <section className={containerClassName}>
+            <ul className='hero-covers'>
+                {books.map((book) => (
+                    <CoverPiece key={book.title} {...book}/>
+                ))}
+            </ul>
+            </section>
         </>
     );
 }
