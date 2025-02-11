@@ -8,7 +8,10 @@ const Home = () => {
     return (
         <>
             <Hero {...sampleBooks[0]}/>
-            <HeroCovers/>
+            <HeroCovers
+            title='similar books'
+            books={sampleBooks}
+            containerClassName='mt-20'/>
         </>
     );
 }

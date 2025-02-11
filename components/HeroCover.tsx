@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import {cn} from "@/lib/utils";
-import {Button} from '@/components/ui/button'
+import BackgroundObject from '@/components/BackgroundObject';
 
 type HeroCoverVariant = 'full'| 'contained'
 const variantStyles : Record<HeroCoverVariant, string> = {
@@ -11,17 +11,17 @@ const variantStyles : Record<HeroCoverVariant, string> = {
 interface Props {
     className?: string;
     variant?:HeroCoverVariant;
+    coverColor:string;
     coverImage: string;
 }
-const HeroCover = ({className, variant='contained', coverImage='/icons/hero.svg'} : Props) => {
+const HeroCover = ({className, variant='contained', coverColor="#ffffff", coverImage='/images/background.png'} : Props) => {
     return (
         <div className={cn('relative', variantStyles[variant], className)}>
-            <Image src={coverImage} width={300} height={300} alt="heroImage" className='object-fill' />
+            <BackgroundObject coverColor={coverColor}/>
+            <div className='absolute z-10'>
+                <Image src={coverImage} fill alt="heroImage" className='object-fill' />
+            </div>
             <p>Volume IV</p>
-            <Button>
-                <Image src='/icons/borrow_book.svg' width={22} height={22} alt='borrowBook'/>
-                Borrow Book
-            </Button>
         </div>
     );
 }

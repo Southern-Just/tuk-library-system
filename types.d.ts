@@ -3,7 +3,8 @@ interface Book_Meta {
     title: string;
     author: string;
     description: string;
-    total_books: books;
+    total_books: number;
     available_books : number;
-    cover: string;
+    coverImage: string;
+    coverColor:string;
 }
