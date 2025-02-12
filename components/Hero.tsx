@@ -19,11 +19,22 @@ const Hero = ({
                     <p>Available:<span> {available_books}</span></p>
                 </div>
             </div>
-            <HeroCover
-                variant='full'
-                className='z-5'
-                coverColor={coverColor}
-                coverImage={coverImage}/>
+            <div className='relative flex flex-1 justify-center'>
+            <div className='relative'>
+                <HeroCover
+                    variant='full'
+                    className='z-5'
+                    coverColor={coverColor}
+                    coverImage={coverImage}/>
+            </div>
+            <div className='absolute top-10 left-5 max-md:hidden '>
+                <HeroCover
+                    variant='full'
+                    className='z-10'
+                    coverColor={coverColor}
+                    coverImage={coverImage}/>
+            </div>
+            </div>
         </section>
     );
 }
