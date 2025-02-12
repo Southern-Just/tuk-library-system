@@ -10,11 +10,11 @@ const HeroCovers = ({title, books,containerClassName} : Props) => {
     return (
         <>
             <section className={containerClassName}>
-            <ul className='hero-covers'>
-                {books.map((book) => (
-                    <CoverPiece key={book.title} {...book}/>
-                ))}
-            </ul>
+                <ul className='hero-covers'>
+                    {books.map((book) => (
+                        <CoverPiece key={book.title} {...book}/>
+                    ))}
+                </ul>
             </section>
         </>
     );

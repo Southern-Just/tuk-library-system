@@ -73,7 +73,7 @@ body {
 }
 @layer hero{
   .hero{
-    @apply flex flex-col items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
+    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
   }
   .hero-text{
     @apply bg-background mt-8 p-6;
@@ -85,7 +85,7 @@ body {
     @apply  text-base text-dark-200 text-justify font-medium mb-4 !important;
   }
   .hero-text-add{
-    @apply text-grey-100/60  flex flex-row font-medium flex-wrap gap-10 text-base text-justify mt-8 !important;
+    @apply text-grey-100 flex flex-row font-medium flex-wrap gap-10 text-base text-justify mt-8 !important;
   }
   .hero-text-add span{
     @apply text-red/70;
@@ -102,4 +102,5 @@ body {
   .hero-cover-contained{
     @apply w-[144px] h-[185px];
   }
+
 }
