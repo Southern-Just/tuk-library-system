@@ -18,10 +18,10 @@ const HeroCover = ({className, variant='contained', coverColor="#ffffff", coverI
     return (
         <div className={cn('relative', variantStyles[variant], className)}>
             <BackgroundObject coverColor={coverColor}/>
-            <div className='absolute z-10'>
+            <div className='absolute z-10'
+            style={{left:'13%', width:'86.6%', height:'87%'}}>
                 <Image src={coverImage} fill alt="heroImage" className='object-fill' />
             </div>
-            <p>Volume IV</p>
         </div>
     );
 }

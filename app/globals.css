@@ -71,36 +71,45 @@ body {
   }
 
 }
-@layer hero{
-  .hero{
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8 !important;
+@layer hero {
+  .hero {
+    @apply flex flex-col-reverse max-md:mt-12 items-center gap-24 sm:gap-32 xl:flex-row xl:gap-8 !important;
   }
-  .hero-text{
-    @apply bg-background mt-8 p-6;
+
+  .hero-text {
+    @apply max-w-3xl flex flex-1 flex-col mt-8 p-6;
   }
+
   .hero-text-h1 {
     @apply text-3xl text-brand-100 font-medium mb-4 !important;
   }
-  .hero-text-description{
-    @apply  text-base text-dark-200 text-justify font-medium mb-4 !important;
+
+  .hero-text-description {
+    @apply text-base text-dark-200 text-justify font-medium mb-4 !important;
   }
-  .hero-text-add{
-    @apply text-grey-100 flex flex-row font-medium flex-wrap gap-10 text-base text-justify mt-8 !important;
+
+  .hero-text-add {
+    @apply text-grey-100  flex flex-row font-medium flex-wrap gap-10 text-base text-justify mt-8 !important;
   }
-  .hero-text-add span{
+
+  .hero-text-add span {
     @apply text-red/70;
   }
-  .hero-cover p{
+
+  .hero-cover p {
     @apply text-gold/100;
   }
 
   /* Hero Cover */
-
-  .hero-cover-full{
+  .hero-cover-full {
     @apply w-[256px] h-[310px] xs:w-[296px] xs:h-[410px];
   }
-  .hero-cover-contained{
+  .hero-cover-contained {
     @apply w-[144px] h-[185px];
   }
 
+  /* Herpo covers */
+  .hero-covers{
+    @apply flex flex-wrap gap-8 justify-center xs:gap-10 max-xs:justify-between;
+  }
 }
