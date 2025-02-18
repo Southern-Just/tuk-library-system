@@ -7,13 +7,14 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {FIELD_NAMES, FIELD_TYPES} from "@/constants";
+import Link from "next/link";
 
 interface Props <T extends FieldValues>{
     type: "SIGN_IN" | "SIGN_UP";
@@ -22,6 +23,7 @@ interface Props <T extends FieldValues>{
     onSubmit:(data:T) => Promise<{success:boolean, error?: string}>;
 }
 const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props<T>) => {
+    const isSignIn = type === "SIGN_IN"
     const form: UseFormReturn<T> = useForm({
         resolver: zodResolver(schema),
         defaultValues: defaultValues as DefaultValues<T>
@@ -33,23 +35,27 @@ const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                { Object.keys(defaultValues).map((field)=>(
+
                 <FormField
+                    key={field}
                     control={form.control}
-                    name="username"
+                    name={field as Path<T>}
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                             <FormControl>
-                                <Input placeholder="Enter Username" {...field} />
+                                <Input type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
                             </FormControl>
-                            <FormDescription>
-                                This is your public display name.
-                            </FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                    ))}
+                <Button type="submit">{isSignIn? "Sign In" : "Sign Up"}</Button>
+                <div className='flex gap-2'>
+                    <p>{isSignIn? 'New to Tuk Library?':  'Already have an account?'}</p>
+                    <Link className="text-blue" href={isSignIn ? '/sign-up' : "/sign-in"}> {isSignIn ? 'Sign up' : "Sign in"}</Link></div>
             </form>
         </Form>
     )

@@ -1,3 +1,20 @@
+
+export const FIELD_NAMES = {
+    fullName: "Full Name",
+    email: "Email",
+    schoolId: "School Id",
+    schoolCard: "Upload school card required",
+    password: "Password",
+}
+
+export const FIELD_TYPES = {
+    fullName: "text",
+    email:"email",
+    schoolId:"number",
+    password:"password",
+}
+
+
 export const sampleBooks = [
     {
         id: 1,
