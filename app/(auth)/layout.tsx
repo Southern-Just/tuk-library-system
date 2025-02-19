@@ -2,24 +2,28 @@ import React, {ReactNode} from 'react'
 import Image from 'next/image'
 const Layout = ({children}:{children:ReactNode}) => {
     return (
-        <main>
-            <section className="relative flex flex-col ">
-                <div className="flex my-auto h-full min-h-screen flex-1 items-center bg-cover bg-top px-4 py-8 ">
-                    <div className='mx-auto flex flex-row gap-4 rounded-lg p-10 max-w-screen-lg'>
-                        <h1>Technical University</h1>
-                        <Image src="/icons/logo.svg" alt="logo" width="100" height="100"/>
+        <main className="auth-container">
+            <div className="auth-logo">
+                <Image
+                    src='/icons/logo.svg'
+                    alt='logo'
+                    width='242'
+                    height='242'
+                    className='ml-5'/>
+            </div>
+            <section className="auth-form-container">
+                <div className='auth-card'>
+                    <h1 className="text-gold text-4xl p-6 font-bold">Library</h1>
+                    <div className='auth-card-heading'>
+                    <h1> The Technical </h1>
+                    <h1> University of Kenya </h1>
                     </div>
-                    <div>{children}</div>
+                    <Image src='/images/auth.png' width={242} height={242} className="ml-5 rounded-lg" alt='auth-image'/>
                 </div>
-                <section className="sticky h-40 w-full " >
-                    <Image
-                    src='/images/background.png'
-                    alt='background'
-                    width='800'
-                    height='800'
-                    className='size-full object-cover'/>
-                </section>
-
+                <div className="auth-form">
+                    <h1 className="text-green font-bold text-4xl">Log in to your library account</h1>
+                    <div className='mt-24 '>{children}</div>
+                </div>
             </section>
         </main>
     )

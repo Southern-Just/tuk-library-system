@@ -34,7 +34,7 @@ const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 { Object.keys(defaultValues).map((field)=>(
 
                 <FormField
@@ -45,14 +45,14 @@ const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props
                         <FormItem>
                             <FormLabel>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                             <FormControl>
-                                <Input type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
+                                <Input className='auth-input' type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                     ))}
-                <Button type="submit">{isSignIn? "Sign In" : "Sign Up"}</Button>
+                <Button type="submit" className='auth-btn'>{isSignIn? "Sign In" : "Sign Up"} </Button>
                 <div className='flex gap-2'>
                     <p>{isSignIn? 'New to Tuk Library?':  'Already have an account?'}</p>
                     <Link className="text-blue" href={isSignIn ? '/sign-up' : "/sign-in"}> {isSignIn ? 'Sign up' : "Sign in"}</Link></div>

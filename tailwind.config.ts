@@ -99,9 +99,9 @@ const config: Config = {
 			screen: {
 				xs:'480px',
 			},
-			animation: {
-				"caret-blink": "caret-blink 1.25s ease-out infinite",
-			},
+			backgroundImage:{
+				pattern:"url('/images/background.png')"
+			}
 		},
 	},
 	plugins: [tailwindcss_animate],

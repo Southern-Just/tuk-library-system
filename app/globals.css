@@ -62,12 +62,18 @@ body {
   }
 }
 
-@layer base {
+@layer base{
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .auth-btn{
+    @apply w-full bg-green/90 py-6 text-2xl text-gray-300 font-medium !important;
+  }
+  .auth-input{
+    @apply bg-white !important;
   }
 
 }
@@ -108,8 +114,25 @@ body {
     @apply w-[144px] h-[185px];
   }
 
-  /* Herpo covers */
+  /* Hero covers */
   .hero-covers{
     @apply flex flex-wrap gap-8 justify-center xs:gap-10 max-xs:justify-between;
+  }
+
+  /* Auth */
+
+  .auth-container{
+    @apply relative flex flex-1 flex-col gap-3 h-full ml-8 p-5;
+  }
+
+  .auth-form-container{
+     @apply flex flex-row gap-10 justify-center mt-10 mx-auto p-16 bg-pattern bg-cover rounded-lg font-semibold;
+  }
+
+  .auth-card{
+    @apply sticky  min-h-screen bg-blue flex flex-col items-center justify-center self-center rounded-bl-lg rounded-tl-lg;
+  }
+  .auth-card-heading{
+    @apply text-3xl p-6 text-white justify-center text-center leading-snug;
   }
 }
