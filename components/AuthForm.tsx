@@ -2,7 +2,7 @@
 
 import {ZodType} from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
-import {DefaultValues, SubmitHandler, useForm, UseFormReturn} from "react-hook-form"
+import {DefaultValues, Path, SubmitHandler, useForm, UseFormReturn} from "react-hook-form"
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import {FIELD_NAMES, FIELD_TYPES} from "@/constants";
 import Link from "next/link";
+import CardUpload from "@/components/CardUpload";
 
 interface Props <T extends FieldValues>{
     type: "SIGN_IN" | "SIGN_UP";
@@ -22,7 +23,7 @@ interface Props <T extends FieldValues>{
     defaultValues:T;
     onSubmit:(data:T) => Promise<{success:boolean, error?: string}>;
 }
-const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props<T>) => {
+const AuthForm = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props<T>) => {
     const isSignIn = type === "SIGN_IN"
     const form: UseFormReturn<T> = useForm({
         resolver: zodResolver(schema),
@@ -45,7 +46,11 @@ const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props
                         <FormItem>
                             <FormLabel>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                             <FormControl>
-                                <Input className='auth-input' type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
+                                {field.name === "schoolCard"?(
+                                <CardUpload/>
+                                ) : (
+                                    <Input className='auth-input' type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
+                                )}
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -60,4 +65,4 @@ const Auth = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props
         </Form>
     )
 }
-export default Auth
+export default AuthForm

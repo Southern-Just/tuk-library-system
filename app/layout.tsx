@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import {ReactNode} from "react";
-
 import localFont from "next/font/local";
+import {SessionProvider} from "next-auth/react";
+import {auth} from "@/auth";
 
 
 const inter = localFont({
@@ -26,18 +27,25 @@ export const metadata: Metadata = {
   description: "A library solution for TUK",
 };
 
-export default function RootLayout({
-  children,
+const RootLayout = async(
+{
+    children
 }: {
-  children: ReactNode;
-}) {
+  children: ReactNode
+}) =>{
+
+    const session = await auth()
   return (
     <html lang="en">
+    <SessionProvider session={session}>
       <body
         className={`${inter_italic.variable} ${inter.className}  font-poppins antialiased`}
       >
         {children}
       </body>
+    </SessionProvider>
     </html>
   );
 }
+
+export default RootLayout;

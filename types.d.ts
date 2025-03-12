@@ -8,3 +8,11 @@ interface Book_Meta {
     coverImage: string;
     coverColor:string;
 }
+
+interface AuthCredentials {
+    fullName: string;
+    email: string;
+    password: string;
+    schoolId: number;
+    schoolCard: string;
+}
