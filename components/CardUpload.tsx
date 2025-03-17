@@ -1,33 +1,65 @@
-'use client'
+"use client";
 
 import React, {useRef, useState} from 'react'
 import { IKImage,  ImageKitProvider, IKUpload } from "imagekitio-next";
 
+
 import config from "@/lib/config";
-import ImageKit from "imagekit";
 const {
     env:{
         imagekit:{publicKey,urlEndpoint},
     },
 } = config;
 
-const imagekit = new ImageKit({publicKey, urlEndpoint});
-const CardUpload = () => {
+const authenticator = async()=>{
+    try{
+        const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`)
+        if(!response.ok){
+            const errorText = await response.text()
+            throw new Error(`Request failed with status code ${response.status}: ${errorText}`)
+        }
+
+        const data = await response.json()
+        const {signature, expire, token} = data
+
+        return{signature, expire, token}
+    }catch (error:any){
+        throw new Error(`Authentication failed: ${error.message}`);
+    }
+}
+const CardUpload = ({
+                        onFileChange,
+                    }:{
+    onFileChange:(filePath:string) => void;
+}) => {
 
     const ikUploadRef = useRef(null)
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState<{filePath:string} | null>(null);
 
-    const onError()=>{}
-    const onSuccess()=>{}
+    const onError(error)=>{}
+    const onSuccess(res)=>{
+        setFile(res);
+        onFileChange(res.filePath);
+    }
+
     return (
-        <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint}>
-            <IKUpload ref={ikUploadRef} onError={onError} onSuccess={onSuccess}/>
+        <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
+            {<IKUpload ref={ikUploadRef}  />}
             <button onClick={(e)=>{
                 e.preventDefault();
                 if(ikUploadRef.current){
+                    // @ts-ignore
                     ikUploadRef.current?.click()
                 }
-            }}>upload</button>
+            }}>{file && <p>{file.filePath}</p>}</button>
+            {file &&(
+            <IKImage
+                alt={file.filePath}
+                path={file.filePath}
+                width={400}
+                height={200}
+            />
+            )}
         </ImageKitProvider>
     )
 }

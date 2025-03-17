@@ -2,7 +2,7 @@
 
 import {ZodType} from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
-import {DefaultValues, Path, SubmitHandler, useForm, UseFormReturn} from "react-hook-form"
+import {DefaultValues, FieldValues, Path, SubmitHandler, useForm, UseFormReturn} from "react-hook-form"
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -15,7 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import {FIELD_NAMES, FIELD_TYPES} from "@/constants";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 import CardUpload from "@/components/CardUpload";
+import { toast } from "sonner";
+
 
 interface Props <T extends FieldValues>{
     type: "SIGN_IN" | "SIGN_UP";
@@ -24,6 +27,7 @@ interface Props <T extends FieldValues>{
     onSubmit:(data:T) => Promise<{success:boolean, error?: string}>;
 }
 const AuthForm = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: Props<T>) => {
+    const router = useRouter();
     const isSignIn = type === "SIGN_IN"
     const form: UseFormReturn<T> = useForm({
         resolver: zodResolver(schema),
@@ -31,7 +35,16 @@ const AuthForm = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: P
     });
 
     // 2. Define a submit handler.
-    const handleSubmit:SubmitHandler<T>= async(data)=> {}
+    const handleSubmit:SubmitHandler<T>= async(data)=> {
+        const result = await onSubmit(data)
+        if(result.success){
+            toast('Kongoi umesign in')
+            router.push("/")
+        }
+        else{
+            toast("");
+        }
+    }
 
     return (
         <Form {...form}>
@@ -46,8 +59,8 @@ const AuthForm = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: P
                         <FormItem>
                             <FormLabel>{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                             <FormControl>
-                                {field.name === "schoolCard"?(
-                                <CardUpload/>
+                                {field.name === "schoolCard" ? (
+                                <CardUpload onFileChange={field.onChange}/>
                                 ) : (
                                     <Input className='auth-input' type={ FIELD_TYPES[field.name as keyof typeof  FIELD_TYPES]} {...field} />
                                 )}

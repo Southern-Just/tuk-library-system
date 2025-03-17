@@ -4,6 +4,8 @@ import {ReactNode} from "react";
 import localFont from "next/font/local";
 import {SessionProvider} from "next-auth/react";
 import {auth} from "@/auth";
+import { Toaster } from "@/components/ui/sonner"
+
 
 
 const inter = localFont({
@@ -42,6 +44,8 @@ const RootLayout = async(
         className={`${inter_italic.variable} ${inter.className}  font-poppins antialiased`}
       >
         {children}
+        <Toaster />
+
       </body>
     </SessionProvider>
     </html>

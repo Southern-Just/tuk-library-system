@@ -9,7 +9,8 @@ const Layout = ({children}:{children:ReactNode}) => {
                     alt='logo'
                     width='242'
                     height='242'
-                    className='ml-5'/>
+                    className='ml-5'
+                />
             </div>
             <section className="auth-form-container">
                 <div className='auth-card'>
