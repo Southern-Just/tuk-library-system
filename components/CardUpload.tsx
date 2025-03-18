@@ -36,15 +36,14 @@ const CardUpload = ({
     const ikUploadRef = useRef(null)
     const [file, setFile] = useState<{filePath:string} | null>(null);
 
-    const onError(error)=>{}
-    const onSuccess(res)=>{
+    const onError=(error)=>{}
+    const onSuccess=(res:any)=> {
         setFile(res);
         onFileChange(res.filePath);
     }
-
-    return (
+        return (
         <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
-            {<IKUpload ref={ikUploadRef}  />}
+            <IKUpload ref={ikUploadRef} onSuccess={onSuccess} onError={onError}   />
             <button onClick={(e)=>{
                 e.preventDefault();
                 if(ikUploadRef.current){
