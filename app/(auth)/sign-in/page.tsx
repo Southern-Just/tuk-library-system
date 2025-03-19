@@ -12,7 +12,7 @@ const Page = () => (
             email:"",
             password:"",
         }}
-        onSubmit={signInWithCredentials}.
+        onSubmit={signInWithCredentials}
     />);
 export default Page
 

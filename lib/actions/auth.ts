@@ -34,6 +34,7 @@ export const signUp = async (params: AuthCredentials) => {
         return {success: false, message: "User already exists"};
     }
     const hashedPassword = await hash(password, 10);
+
     try{
         await db.insert(users).values({fullName, email, schoolId, password: hashedPassword, schoolCard});
 

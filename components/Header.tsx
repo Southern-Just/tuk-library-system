@@ -2,17 +2,20 @@
 import Image from 'next/image';
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-import {cn} from "@/lib/utils";
+import {cn, getInitials} from "@/lib/utils";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import {Session} from "next-auth";
 
-const Header = () => {
+
+const Header = ({session}:{session:Session}) => {
     const pathname = usePathname();
     return (
-        <header className="my-6 flex justify-between gap-6">
+        <header className="my-6 flex justify-between gap-0">
             <Link href="/">
                 <Image src="/icons/logo.svg" width={260} height={260} alt="Logo"/>
             </Link>
             <ul className="flex flex-row items-center gap-6">
-                <li>
+                <li className="flex flex-row items-center">
                     <Link href="/"
                           className={cn("text-base cursor-pointer px-4", pathname === '/' ? 'text-brand-100': 'text-black',)}
                     >
@@ -23,6 +26,14 @@ const Header = () => {
                     >
                         Search
                     </Link>
+                    <Link href="/user-profile" className="flex flex-row items-center gap-2">
+                        <Avatar>
+                            <AvatarFallback>{getInitials(session?.user?.name || "AB")}</AvatarFallback>
+                        </Avatar>
+                        user001
+                        <Image src="/icons/logout.svg" width={22} height={22} alt="logout"/>
+                    </Link>
+
                 </li>
             </ul>
         </header>

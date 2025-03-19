@@ -17,5 +17,6 @@ const Page = () => (
             schoolCard:""
         }}
         onSubmit={signUp}
-        />);
+        />
+);
 export default Page

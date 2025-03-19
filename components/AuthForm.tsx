@@ -42,7 +42,7 @@ const AuthForm = <T extends FieldValues>({type,schema,defaultValues,onSubmit}: P
             router.push("/")
         }
         else{
-            toast("");
+            toast("Metit ng'etai X ");
         }
     }
 
