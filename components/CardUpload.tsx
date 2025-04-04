@@ -36,8 +36,10 @@ const CardUpload = ({
     const ikUploadRef = useRef(null)
     const [file, setFile] = useState<{filePath:string} | null>(null);
 
-    const onError=(error)=>{}
-    const onSuccess=(res:any)=> {
+    const onError=(error)=>{
+        console.log(error)
+    }
+    const onSuccess=(res)=> {
         setFile(res);
         onFileChange(res.filePath);
     }
@@ -47,7 +49,6 @@ const CardUpload = ({
             <button onClick={(e)=>{
                 e.preventDefault();
                 if(ikUploadRef.current){
-                    // @ts-ignore
                     ikUploadRef.current?.click()
                 }
             }}>{file && <p>{file.filePath}</p>}</button>

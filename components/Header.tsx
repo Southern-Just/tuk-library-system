@@ -31,7 +31,6 @@ const Header = ({session}:{session:Session}) => {
                             <AvatarFallback>{getInitials(session?.user?.name || "AB")}</AvatarFallback>
                         </Avatar>
                         user001
-                        <Image src="/icons/logout.svg" width={22} height={22} alt="logout"/>
                     </Link>
 
                 </li>
